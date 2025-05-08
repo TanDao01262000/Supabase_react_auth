@@ -15,7 +15,6 @@ function ProfileUpdate() {
     setMessage('');
 
     try {
-      // Get the current user's ID
       const { data: { user }, error: userError } = await supabase.auth.getUser();
 
       if (userError || !user) {
@@ -26,7 +25,6 @@ function ProfileUpdate() {
       const userId = user.id;
       console.log('User ID:', userId); 
 
-      // Update the user's profile in the profiles table
       const { data, error } = await supabase
         .from('profiles')
         .update({
