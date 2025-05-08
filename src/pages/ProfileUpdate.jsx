@@ -51,7 +51,7 @@ function ProfileUpdate() {
         setMessage('Profile updated successfully!');
       }
     } catch (err) {
-      setMessage('Failed to update profile. Please try again.');
+      setMessage('Failed to up`date profile. Please try again.');
       console.error('Update Profile Error:', err);
     }
   };
