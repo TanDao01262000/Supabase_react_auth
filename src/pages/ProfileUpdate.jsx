@@ -10,7 +10,6 @@ function ProfileUpdate() {
   const [message, setMessage] = useState('');
 
 
-  // Handle profile update
   const handleSubmit = async (event) => {
     event.preventDefault();
     setMessage('');
@@ -24,8 +23,8 @@ function ProfileUpdate() {
         return;
       }
 
-      const userId = user.id; // Use the user's ID from auth.users
-      console.log('User ID:', userId); // Debugging
+      const userId = user.id;
+      console.log('User ID:', userId); 
 
       // Update the user's profile in the profiles table
       const { data, error } = await supabase
@@ -36,18 +35,16 @@ function ProfileUpdate() {
           country: country,
           interests: interests.split(',').map((interest) => interest.trim()),
           proficiency_level: proficiencyLevel,
-        })
-        .eq('id', userId) // Match the row where id equals the user's ID
-        .select();
+        }).eq('id', userId).select();
 
       if (error) {
-        console.error('Supabase Error:', error); // Log the error
+        console.error('Supabase Error:', error);
         setMessage('Failed to update profile. Please try again.');
       } else if (data.length === 0) {
         console.warn('No rows updated. Check if the user ID exists in the profiles table.');
         setMessage('No profile found to update.');
       } else {
-        console.log('Updated Profile:', data); // Log the updated data
+        console.log('Updated Profile:', data);
         setMessage('Profile updated successfully!');
       }
     } catch (err) {

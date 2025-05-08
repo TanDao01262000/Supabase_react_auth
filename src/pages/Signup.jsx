@@ -11,7 +11,6 @@ function Signup() {
     setMessage('');
 
     try {
-      // Sign up the user with Supabase Auth
       const { data, error } = await supabase.auth.signUp({
         email,
         password,

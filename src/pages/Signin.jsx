@@ -13,7 +13,6 @@ function Signin() {
     setMessage('');
 
     try {
-      // Sign in the user with Supabase Auth
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
